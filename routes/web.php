@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LocalizationController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,7 @@ Route::get('/', function () {
 })->middleware(['auth', 'role:admin']);
 
 Route::group(['middleware'=>['auth', 'role:admin']], function (){
+    Route::get('locale/{lang}', [LocalizationController::class, 'setLang']);
     Route::resource('companies', 'App\Http\Controllers\CompanyController');
     Route::resource('employees', 'App\Http\Controllers\EmployeeController');
 });

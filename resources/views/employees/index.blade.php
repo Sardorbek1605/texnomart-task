@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('page_title')
-    Employees
+    @lang('text.employees')
 @endsection
 
 @section('content-header')
@@ -9,12 +9,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Employees</h1>
+                    <h1 class="m-0">@lang('text.employees')</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Employees</li>
+                        <li class="breadcrumb-item"><a href="/">@lang('text.dashboard')</a></li>
+                        <li class="breadcrumb-item active">@lang('text.employees')</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -31,7 +31,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="card-tools">
-                                <a href="{{ route('employees.create') }}" class="btn btn-success">+ Add</a>
+                                <a href="{{ route('employees.create') }}" class="btn btn-success">+ @lang('text.add')</a>
                             </div>
                         </div>
                         <div class="card-body p-0">
@@ -42,25 +42,25 @@
                                             #
                                         </th>
                                         <th>
-                                            Company
+                                            @lang('text.company')
                                         </th>
                                         <th>
-                                            Employee Firstname
+                                            @lang('employee_firstname')
                                         </th>
                                         <th>
-                                            Employee Lastname
+                                            @lang('employee_lastname')
                                         </th>
                                         <th>
-                                            Email
+                                            @lang('text.email')
                                         </th>
                                         <th>
-                                            Phone
+                                            @lang('text.phone')
                                         </th>
                                         <th>
-                                            Status
+                                            @lang('text.status')
                                         </th>
                                         <th>
-                                            Actions
+                                            @lang('text.actions')
                                         </th>
                                     </tr>
                                 </thead>
@@ -68,7 +68,7 @@
                                 @foreach($employees as $key => $item)
                                     <tr>
                                         <td>{{ $employees->firstItem()+$key }}</td>
-                                        <td>{{ $item->company->name }}</td>
+                                        <td>{{ $item->company->name??null }}</td>
                                         <td>{{ $item->first_name }}</td>
                                         <td>{{ $item->last_name }}</td>
                                         <td>{{ $item->email }}</td>
@@ -76,13 +76,13 @@
                                         <td><span class="badge badge-pill badge-{{ $item->status == 'active' ? 'success' : 'secondary' }}">{{ $item->status }}</span></td>
                                         <td class="project-actions">
                                             <a class="btn btn-primary btn-sm" href="{{ route('employees.show', $item) }}">
-                                                <i class="fas fa-eye"></i> View
+                                                <i class="fas fa-eye"></i> @lang('text.view')
                                             </a>
                                             <a class="btn btn-info btn-sm" href="{{ route('employees.edit', $item) }}">
-                                                <i class="fas fa-pencil-alt"></i> Edit
+                                                <i class="fas fa-pencil-alt"></i> @lang('text.edit')
                                             </a>
                                             <a class="btn btn-danger btn-sm" href="#delete{{ $item->id }}" data-toggle="modal">
-                                                <i class="fas fa-trash"></i> Delete
+                                                <i class="fas fa-trash"></i> @lang('text.delete')
                                             </a>
                                             <div class="modal fade" id="delete{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">

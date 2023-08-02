@@ -35,12 +35,21 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link {{ \Illuminate\Support\Facades\App::getLocale() == 'uz'? 'active' : '' }}" href="{{ '/locale/uz' }}">Uz</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{ \Illuminate\Support\Facades\App::getLocale() == 'en'? 'active' : '' }}" href="{{ '/locale/en' }}">En</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {{ \Illuminate\Support\Facades\App::getLocale() == 'ru'? 'active' : '' }}" href="{{ '/locale/ru' }}">Ru</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
                 <i class="fas fa-th-large"></i>
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+            <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">@lang('text.logout')</a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf
             </form>

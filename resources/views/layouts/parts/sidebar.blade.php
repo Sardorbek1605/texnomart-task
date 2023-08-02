@@ -26,7 +26,7 @@
                     <a href="/" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Dashboard
+                            @lang('text.dashboard')
                         </p>
                     </a>
                 </li>
@@ -35,7 +35,7 @@
                     <a href="{{ route('companies.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-list"></i>
                         <p>
-                            Companies
+                            @lang('text.companies')
                         </p>
                     </a>
                 </li>
@@ -44,7 +44,7 @@
                     <a href="{{ route('employees.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
-                            Employees
+                            @lang('text.employees')
                         </p>
                     </a>
                 </li>

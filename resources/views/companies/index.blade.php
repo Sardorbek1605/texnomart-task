@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('page_title')
-    Companies
+    @lang('text.companies')
 @endsection
 
 @section('content-header')
@@ -9,12 +9,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Companies</h1>
+                    <h1 class="m-0">@lang('text.companies')</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Companies</li>
+                        <li class="breadcrumb-item"><a href="/">@lang('text.dashboard')</a></li>
+                        <li class="breadcrumb-item active">@lang('text.companies')</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -31,7 +31,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="card-tools">
-                                <a href="{{ route('companies.create') }}" class="btn btn-success">+ Add</a>
+                                <a href="{{ route('companies.create') }}" class="btn btn-success">+ @lang('text.add')</a>
                             </div>
                         </div>
                         <div class="card-body p-0">
@@ -39,12 +39,12 @@
                                 <thead>
                                     <tr>
                                         <th style="width: 2%">#</th>
-                                        <th>Company Name</th>
-                                        <th>Company Email</th>
-                                        <th>Website Url</th>
-                                        <th>Logo</th>
-                                        <th>Employee Count</th>
-                                        <th>Actions</th>
+                                        <th>@lang('text.company_name')</th>
+                                        <th>@lang('text.company_email')</th>
+                                        <th>@lang('text.website_url')</th>
+                                        <th>@lang('text.logo')</th>
+                                        <th>@lang('text.employee_count')</th>
+                                        <th>@lang('text.actions')</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -60,13 +60,13 @@
                                         <td>{{ $item->employees_count??0 }}</td>
                                         <td class="project-actions">
                                             <a class="btn btn-primary btn-sm" href="{{ route('companies.show', $item) }}">
-                                                <i class="fas fa-eye"></i> View
+                                                <i class="fas fa-eye"></i> @lang('text.view')
                                             </a>
                                             <a class="btn btn-info btn-sm" href="{{ route('companies.edit', $item) }}">
-                                                <i class="fas fa-pencil-alt"></i> Edit
+                                                <i class="fas fa-pencil-alt"></i> @lang('text.edit')
                                             </a>
                                             <a class="btn btn-danger btn-sm" href="#delete{{ $item->id }}" data-toggle="modal">
-                                                <i class="fas fa-trash"></i> Delete
+                                                <i class="fas fa-trash"></i> @lang('text.delete')
                                             </a>
                                             <div class="modal fade" id="delete{{ $item->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
