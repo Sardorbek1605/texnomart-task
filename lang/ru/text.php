@@ -26,5 +26,9 @@ return [
     'edit' => "Редактировать",
     "delete" => "Удалить",
     'add' => "Добавлять",
-    'logout' => "Выйти"
+    'logout' => "Выйти",
+
+    //Dashboard
+    'admins' => "Admins",
+    'deleted_employees' => "Deleted employees",
 ];

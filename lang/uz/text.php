@@ -26,5 +26,9 @@ return [
     'edit' => "O'zgartirish",
     "delete" => "O'chirish",
     'add' => "Qo'shish",
-    'logout' => "Chiqish"
+    'logout' => "Chiqish",
+
+    //Dashboard
+    'admins' => "Adminlar",
+    'deleted_employees' => "O'chirilgan hodimlar",
 ];

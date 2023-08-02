@@ -26,5 +26,9 @@ return [
     'edit' => "Edit",
     "delete" => "Delete",
     'add' => "Add",
-    'logout' => "Logout"
+    'logout' => "Logout",
+
+    //Dashboard
+    'admins' => "Admins",
+    'deleted_employees' => "Deleted employees",
 ];
