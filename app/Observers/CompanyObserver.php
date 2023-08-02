@@ -15,7 +15,7 @@ class CompanyObserver
      */
     public function created(Company $company): void
     {
-        $this->sendMailable($company, CompanyCreateEmail::class);
+        //$this->sendMailable($company, CompanyCreateEmail::class);
     }
 
     /**
