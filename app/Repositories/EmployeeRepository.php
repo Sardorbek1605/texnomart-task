@@ -17,26 +17,37 @@ class EmployeeRepository implements EmployeeRepositoryInterface
 {
     public function index()
     {
+        return Employee::query()->orderByDesc('id')->paginate(10);
+    }
 
+    public function create()
+    {
+        return Company::query()->orderByDesc('id')->get();
     }
 
     public function store(StoreEmployeeRequest $storeEmployeeRequest)
     {
-
+        $storeEmployeeRequest['status'] = $storeEmployeeRequest->status == 'on' ? Employee::ACTIVE : Employee::INACTIVE;
+        return Employee::create($storeEmployeeRequest->all());
     }
 
     public function edit(Employee $employee)
     {
-
+        $response = [
+            'employee' => $employee,
+            'companies' => Company::query()->orderByDesc('id')->get()
+        ];
+        return $response;
     }
 
     public function update(UpdateEmployeeRequest $updateEmployeeRequest, Employee $employee)
     {
-
+        $updateEmployeeRequest['status'] = $updateEmployeeRequest->status == 'on' ? Employee::ACTIVE : Employee::INACTIVE;
+        return $employee->update($updateEmployeeRequest->all());
     }
 
     public function delete(Employee $employee)
     {
-
+        return $employee->delete();
     }
 }

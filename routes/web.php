@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 Route::group(['middleware'=>['auth', 'role:admin']], function (){
     Route::resource('companies', 'App\Http\Controllers\CompanyController');
-    Route::resource('employee', 'App\Http\Controllers\EmployeeController');
+    Route::resource('employees', 'App\Http\Controllers\EmployeeController');
 });
 
 Auth::routes([

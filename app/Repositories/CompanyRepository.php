@@ -14,7 +14,7 @@ class CompanyRepository implements CompanyRepositoryInterface
 {
     public function index()
     {
-        return Company::query()->orderByDesc('id')->paginate(10);
+        return Company::query()->orderByDesc('id')->withCount('employees as employees_count')->paginate(10);
     }
 
     public function store(StoreCompanyRequest $storeCompanyRequest)
@@ -22,9 +22,7 @@ class CompanyRepository implements CompanyRepositoryInterface
         $data = $storeCompanyRequest->all();
         if ($storeCompanyRequest->hasFile('logo')){
             $file = $storeCompanyRequest->file('logo');
-            $ext = $file->getClientOriginalExtension();
-            $fileName = time().".".$ext;
-            $file->move(storage_path('app/public/'), $fileName);
+            $fileName = $this->fileUpload($file);
             $data['logo'] = $fileName;
         }else{
             $data['logo'] = '';
@@ -37,9 +35,7 @@ class CompanyRepository implements CompanyRepositoryInterface
         $data = $updateCompanyRequest->all();
         if ($updateCompanyRequest->hasFile('logo')){
             $file = $updateCompanyRequest->file('logo');
-            $ext = $file->getClientOriginalExtension();
-            $fileName = time().".".$ext;
-            Storage::put('app/public/'.$fileName, $file);
+            $fileName = $this->fileUpload($file);
             $data['logo'] = $fileName;
         }else{
             $data['logo'] = $company->logo;
@@ -49,6 +45,20 @@ class CompanyRepository implements CompanyRepositoryInterface
 
     public function delete(Company $company)
     {
+        $this->fileRemove($company->logo);
         return $company->delete();
+    }
+
+    public function fileUpload($file)
+    {
+        $ext = $file->getClientOriginalExtension();
+        $fileName = time().".".$ext;
+        $file->move(storage_path('app/public/'), $fileName);
+        return $fileName;
+    }
+
+    public function fileRemove($fileName)
+    {
+        return Storage::delete('public/'.$fileName);
     }
 }

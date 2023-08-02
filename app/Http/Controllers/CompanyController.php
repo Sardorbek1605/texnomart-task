@@ -65,7 +65,7 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        //
+        return view('companies.edit', compact('company'));
     }
 
     /**
@@ -73,7 +73,17 @@ class CompanyController extends Controller
      */
     public function update(UpdateCompanyRequest $request, Company $company)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $this->companyRepository->update($request, $company);
+            DB::commit();
+            Alert::success('Company updated successfully!');
+            return redirect()->route('companies.index');
+        }catch (\Exception $e){
+            DB::rollBack();
+            Alert::error($e->getMessage());
+            return redirect()->back();
+        }
     }
 
     /**
@@ -81,6 +91,16 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $this->companyRepository->delete($company);
+            DB::commit();
+            Alert::success('Company deleted successfully!');
+            return redirect()->back();
+        }catch (\Exception $e){
+            DB::rollBack();
+            Alert::error($e->getMessage());
+            return redirect()->back();
+        }
     }
 }

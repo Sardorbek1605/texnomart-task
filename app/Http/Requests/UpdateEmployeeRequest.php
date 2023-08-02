@@ -15,7 +15,9 @@ class UpdateEmployeeRequest extends BaseRequest
     public function rules(): array
     {
         return [
-            //
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'company_id' => 'required'
         ];
     }
 }

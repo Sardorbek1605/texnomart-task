@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('logo', 512)->nullable();
             $table->string('url')->nullable();
             $table->longText('about');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

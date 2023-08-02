@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_id')->references('id')->on('companies')->noActionOnDelete();
+            $table->foreignId('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->string('status');
             $table->longText('bio');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
