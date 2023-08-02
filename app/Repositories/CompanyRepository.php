@@ -14,7 +14,7 @@ class CompanyRepository implements CompanyRepositoryInterface
 {
     public function index()
     {
-        return Company::query()->orderByDesc('id')->withCount('employees as employees_count')->paginate(10);
+        return Company::query()->sortable()->withCount('employees as employees_count')->paginate(10);
     }
 
     public function store(StoreCompanyRequest $storeCompanyRequest)

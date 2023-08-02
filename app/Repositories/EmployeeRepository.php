@@ -17,7 +17,7 @@ class EmployeeRepository implements EmployeeRepositoryInterface
 {
     public function index()
     {
-        return Employee::query()->orderByDesc('id')->paginate(10);
+        return Employee::query()->sortable()->paginate(10);
     }
 
     public function create()

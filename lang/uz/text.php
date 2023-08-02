@@ -20,6 +20,7 @@ return [
     'website_url' => "Kompaniya web sayti",
     'logo' => "Logotipi",
     'employee_count' => "Hodimlar soni",
+    'created_at' => "Qo'shilgan sana",
 
     //Buttons
     'view' => "Ko'rish",

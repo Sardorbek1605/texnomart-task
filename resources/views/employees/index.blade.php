@@ -45,19 +45,22 @@
                                             @lang('text.company')
                                         </th>
                                         <th>
-                                            @lang('employee_firstname')
+                                            @sortablelink('first_name', __('text.employee_firstname'))
                                         </th>
                                         <th>
-                                            @lang('employee_lastname')
+                                            @sortablelink('last_name', __('text.employee_lastname'))
                                         </th>
                                         <th>
-                                            @lang('text.email')
+                                            @sortablelink('email', __('text.email'))
                                         </th>
                                         <th>
                                             @lang('text.phone')
                                         </th>
                                         <th>
-                                            @lang('text.status')
+                                            @sortablelink('status', __('text.status'))
+                                        </th>
+                                        <th>
+                                            @sortablelink('created_at', __('text.created_at'))
                                         </th>
                                         <th>
                                             @lang('text.actions')
@@ -74,6 +77,7 @@
                                         <td>{{ $item->email }}</td>
                                         <td>{{ $item->phone }}</td>
                                         <td><span class="badge badge-pill badge-{{ $item->status == 'active' ? 'success' : 'secondary' }}">{{ $item->status }}</span></td>
+                                        <td>{{ $item->created_at }}</td>
                                         <td class="project-actions">
                                             <a class="btn btn-primary btn-sm" href="{{ route('employees.show', $item) }}">
                                                 <i class="fas fa-eye"></i> @lang('text.view')

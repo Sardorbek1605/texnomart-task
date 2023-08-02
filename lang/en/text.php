@@ -20,6 +20,7 @@ return [
     'website_url' => "Website Url",
     'logo' => "Logo",
     'employee_count' => "Employee Count",
+    'created_at' => "Created At",
 
     //Buttons
     'view' => "View",

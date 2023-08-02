@@ -39,11 +39,12 @@
                                 <thead>
                                     <tr>
                                         <th style="width: 2%">#</th>
-                                        <th>@lang('text.company_name')</th>
-                                        <th>@lang('text.company_email')</th>
-                                        <th>@lang('text.website_url')</th>
+                                        <th>@sortablelink('name', __('text.company_name'))</th>
+                                        <th>@sortablelink('email', __('text.company_email'))</th>
+                                        <th>@sortablelink('url', __('text.website_url'))</th>
                                         <th>@lang('text.logo')</th>
                                         <th>@lang('text.employee_count')</th>
+                                        <th>@sortablelink('created_at', __('text.created_at'))</th>
                                         <th>@lang('text.actions')</th>
                                     </tr>
                                 </thead>
@@ -58,6 +59,7 @@
                                             <img alt="Avatar" class="table-avatar" style="width: 30px; height: 30px; border-radius: 50%" src="{{ asset('storage/'.$item->logo) }}">
                                         </td>
                                         <td>{{ $item->employees_count??0 }}</td>
+                                        <td>{{ $item->created_at}}</td>
                                         <td class="project-actions">
                                             <a class="btn btn-primary btn-sm" href="{{ route('companies.show', $item) }}">
                                                 <i class="fas fa-eye"></i> @lang('text.view')

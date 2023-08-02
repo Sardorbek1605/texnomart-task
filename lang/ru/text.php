@@ -20,6 +20,7 @@ return [
     'website_url' => "URL веб-сайта",
     'logo' => "Логотип",
     'employee_count' => "Количество сотрудников",
+    'created_at' => "Дата Добавлена",
 
     //Buttons
     'view' => "Вид",
