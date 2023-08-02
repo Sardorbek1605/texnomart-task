@@ -16,8 +16,4 @@ interface CompanyRepositoryInterface
     public function update(UpdateCompanyRequest $updateCompanyRequest, Company $company);
 
     public function delete(Company $company);
-
-    public function fileUpload($file);
-
-    public function fileRemove($fileName);
 }

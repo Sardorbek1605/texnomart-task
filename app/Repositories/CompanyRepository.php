@@ -8,6 +8,7 @@ use App\Http\Requests\StoreCompanyRequest;
 use App\Http\Requests\UpdateCompanyRequest;
 use App\Interfaces\CompanyRepositoryInterface;
 use App\Models\Company;
+use App\Services\CompanyFileService;
 use Illuminate\Support\Facades\Storage;
 
 class CompanyRepository implements CompanyRepositoryInterface
@@ -21,8 +22,7 @@ class CompanyRepository implements CompanyRepositoryInterface
     {
         $data = $storeCompanyRequest->all();
         if ($storeCompanyRequest->hasFile('logo')){
-            $file = $storeCompanyRequest->file('logo');
-            $fileName = $this->fileUpload($file);
+            $fileName = CompanyFileService::fileUpload($storeCompanyRequest->file('logo'));
             $data['logo'] = $fileName;
         }else{
             $data['logo'] = '';
@@ -34,8 +34,7 @@ class CompanyRepository implements CompanyRepositoryInterface
     {
         $data = $updateCompanyRequest->all();
         if ($updateCompanyRequest->hasFile('logo')){
-            $file = $updateCompanyRequest->file('logo');
-            $fileName = $this->fileUpload($file);
+            $fileName = CompanyFileService::fileUpload($updateCompanyRequest->file('logo'));
             $data['logo'] = $fileName;
         }else{
             $data['logo'] = $company->logo;
@@ -45,20 +44,7 @@ class CompanyRepository implements CompanyRepositoryInterface
 
     public function delete(Company $company)
     {
-        $this->fileRemove($company->logo);
+        CompanyFileService::fileRemove($company->logo);
         return $company->delete();
-    }
-
-    public function fileUpload($file)
-    {
-        $ext = $file->getClientOriginalExtension();
-        $fileName = time().".".$ext;
-        $file->move(storage_path('app/public/'), $fileName);
-        return $fileName;
-    }
-
-    public function fileRemove($fileName)
-    {
-        return Storage::delete('public/'.$fileName);
     }
 }
